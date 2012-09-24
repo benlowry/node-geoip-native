@@ -1,11 +1,16 @@
 var countries = [],
 	midpoints = [],
-	numcountries = 0;
+	numcountries = 0,
+	ready = false;
 
 module.exports = geoip = {
    lookup: function(ip) {
-	   console.log("geoip warming up");
-       return {code: "N/A", name: "UNKNOWN"};
+	   if(!ready) {
+		   console.log("geoip warming up");
+	       return {code: "N/A", name: "UNKNOWN"};
+	   }
+	   
+	   return find(ip);
    }
 };
 
@@ -111,12 +116,7 @@ function find(ip) {
         }
 
         numcountries = countries.length;
-		
-	    geoip.lookup = function(ip) {
-	        var result = find(ip);
-	        return {code: result.code, name: result.name};
-	    }
-
+		ready = true;
     });
 
 }());
