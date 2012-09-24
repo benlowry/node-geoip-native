@@ -1,10 +1,10 @@
-{ "name" :            "node-mongodb-wrapper"
-, "description" :     "A simplified interface for MongoDB"
-, "keywords" :        ["mongodb", "mongo", "wrapper", "db"]
-, "version" :         "0.0.2"
+{ "name" :            "geoip-native"
+, "description" :     "A fast, native JavaScript geoip api.  This product includes GeoLite data created by MaxMind, available from http://www.maxmind.com"
+, "keywords" :        ["geoip", "iplookup", "ip", "country"]
+, "version" :         "0.0.1"
 , "author" :          "Playtomic Inc"
 , "repository" :    { "type" :  "git"
-                    , "url" :   "http://github.com/benlowry/node-mongodb-wrapper.git" }
+                    , "url" :   "http://github.com/benlowry/node-geoip-native.git" }
 , "dependencies" : {
   "mongodb": ">= 1.0.0"
 }

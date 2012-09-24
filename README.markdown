@@ -6,6 +6,8 @@ It is non-blocking and operates without any IO after initially loading the data 
 
 Results are 4 - 5 times faster than geoip-lite with the caveat that it takes longer to initialize and uses 60 or 70 megabytes memory.
 
+This is used in production at [Playtomic](https://playtomic.com/) in a [high volume API](https://success.heroku.com/playtomic) where performance matters.
+
 Benchmarks on my 2011 Macbook Air whilst running lots of software.  The test took the middle 10 results from 20 iterations of performing 1,000,000 lookups and averaged them.  The APIs are interchangeable so tests  were identical.
 
 	geoip-native
