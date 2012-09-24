@@ -84,7 +84,7 @@ function find(ip) {
 
     var fs = require("fs");
     var sys = require("sys");
-    var stream = fs.createReadStream("./GeoIPCountryWhois.csv");
+    var stream = fs.createReadStream(__dirname + "/GeoIPCountryWhois.csv");
     var buffer = "";
 
     stream.addListener("data", function(data) {
