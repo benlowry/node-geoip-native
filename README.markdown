@@ -4,17 +4,14 @@ This package is a lightning-fast, native JavaScript geoip lookup built on [MaxMi
 
 It is non-blocking and operates without any IO after initially loading the data into memory.
 
-Results are 4 - 5 times faster than geoip-lite with the caveat that it takes longer to initialize and uses 60 or 70 megabytes memory.
+Results are 4 - 5 times faster than [geoip-lite](https://github.com/bluesmoon/node-geoip) with the caveat that it takes 2 or 3 times longer to initialize and uses 60 or 70 megabytes memory.
 
 This is used in production at [Playtomic](https://playtomic.com/) in a [high volume API](https://success.heroku.com/playtomic) where performance matters.
 
-Benchmarks on my 2011 Macbook Air whilst running lots of software.  The test took the middle 10 results from 20 iterations of performing 1,000,000 lookups and averaged them.  The APIs are interchangeable so tests  were identical.
+Benchmarks on my 2011 Macbook Air whilst running lots of software.  The test took the middle 10 results from 20 iterations and averaged them.  The APIs are interchangeable so tests  were identical.
 
-	geoip-native
-	average: 1540.3
-
-	geoip-lite
-	average: 8375.3
+	geoip-native:	average: 1540.3ms / million lookups
+	geoip-lite: 	average: 8375.3ms / million lookups
 
 ## Requires
 
