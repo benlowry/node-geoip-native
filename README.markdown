@@ -35,6 +35,7 @@ Node GeoIP Native provides methods for:
 	var geoip = require("geoip-native");
 	var ip = "123.123.123.123";
 	geoip.lookup(ip);
+	console.log("country: " + ip.name + " / " + ip.code);
 
 	// in practice you'd want:
 	// ip = request.headers["x-forwarded-for"] || request.connection.remoteAddress,
