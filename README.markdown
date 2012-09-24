@@ -19,15 +19,15 @@ Benchmarks on my 2011 Macbook Air whilst running lots of software.  The test too
 1. Comes with the [standard CSV database by MaxMind](http://www.maxmind.com/app/geolite) which may require updating.
 
 ## How to use
-1. git clone https://github.com/benlowry/node-mongodb-wrapper
-2. cd node-mongodb-wrapper
+1. git clone https://github.com/benlowry/node-geoip-native
+2. cd node-geoip-native
 3. node test.js
 
 or just ```npm install geoip-native```
 
 ## Methods
 
-Node MongoDB Wrapper provides methods for:
+Node GeoIP Native provides methods for:
 
 1. ```lookup``` performs the lookup, takes the ip address as a parameter
 
