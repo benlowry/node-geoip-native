@@ -1,13 +1,6 @@
-var countries = [];
-var midpoints = [];
-var numcountries = 0;
-//var geoipdata = [];//require(__dirname + "/geoip_data.js");
-
-// country data
-console.log("prepping countries");
-//countries = geoipdata.countries();
-
-
+var countries = [],
+	midpoints = [],
+	numcountries = 0;
 
 module.exports = geoip = {
    lookup: function(ip) {
@@ -49,6 +42,7 @@ function find(ip) {
         next = nn < numcountries ? countries[nn] : null;
         prev = pn > -1 ? countries[pn] : null;
         
+		// take another step?
         if(step > 0) {
 
             if(!next || next.ipstart < ipl) {
@@ -81,7 +75,11 @@ function find(ip) {
     }
 }
 
-// get our data
+/**
+* Prepare the data.  This uses the standard free GeoIP CSV database 
+* from MaxMind, you should be able to update it at any time by just
+* overwriting GeoIPCountryWhois.csv with a new version.
+*/
 (function() {
 
     var fs = require("fs");
