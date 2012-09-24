@@ -4,8 +4,8 @@ var countries = [],
 
 module.exports = geoip = {
    lookup: function(ip) {
-       var result = find(ip);
-       return {code: result.code, name: result.name};
+	   console.log("geoip warming up");
+       return {code: "N/A", name: "UNKNOWN"};
    }
 };
 
@@ -111,6 +111,11 @@ function find(ip) {
         }
 
         numcountries = countries.length;
+		
+	    geoip.lookup = function(ip) {
+	        var result = find(ip);
+	        return {code: result.code, name: result.name};
+	    }
 
     });
 
