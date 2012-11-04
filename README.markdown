@@ -20,7 +20,7 @@ Benchmarks on my 2011 Macbook Air whilst running lots of software.  The test too
 ## How to use
 1. git clone https://github.com/benlowry/node-geoip-native
 2. cd node-geoip-native
-3. node test.js
+3. node benchmark.js
 
 or just ```npm install geoip-native```
 
@@ -29,6 +29,15 @@ or just ```npm install geoip-native```
 Node GeoIP Native provides methods for:
 
 1. ```lookup``` performs the lookup, takes the ip address as a parameter
+
+## Testing
+First, you have to install nodeunit (https://github.com/caolan/nodeunit)
+
+	$> npm install nodeunit
+
+Second, run the unit test:
+
+	$> ./node_modules/nodeunit/bin/nodeunit test/unit/lookupTest.js
 
 ## Examples
 
