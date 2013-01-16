@@ -6,7 +6,7 @@ It is non-blocking and operates without any IO after initially loading the data 
 
 Results are 4 - 5 times faster than [geoip-lite](https://github.com/bluesmoon/node-geoip) with the caveat that it takes 2 or 3 times longer to initialize and uses 60 or 70 megabytes memory.
 
-This is used in production at [Playtomic](https://playtomic.com/) in a [high volume API](https://success.heroku.com/playtomic) where performance matters.
+This is used in production at [Playtomic](https://playtomic.com/) up to about 20,000 times a second.
 
 Benchmarks on my 2011 Macbook Air whilst running lots of software.  The test took the middle 10 results from 20 iterations and averaged them.  The APIs are interchangeable so tests  were identical.
 

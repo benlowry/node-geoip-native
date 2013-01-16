@@ -1,35 +1,80 @@
 var countries = [],
 	midpoints = [],
-	numcountries = 0,
-	ready = false;
+	numcountries = 0;
 
-module.exports = geoip = {
-   lookup: function(ip) {
-	   if(!ready) {
-		   console.log("geoip warming up");
-	       return {code: "N/A", name: "UNKNOWN"};
-	   }
-	   
-	   return find(ip);
-   }
+var geoip = module.exports = {
+
+    ready: false,
+
+    lookup: function(ip) {
+
+        if(!geoip.ready) {
+            return { error: "GeoIP not ready" };
+        }
+
+        var ipl = iplong(ip);
+
+        if(ipl == 0) {
+            return { error: "Invalid ip address " + ip + " -> " + ipl + " as integer" };
+        }
+
+        return find(ipl);
+    }
 };
+
+function iplong(ip) {
+
+    if(!ip) {
+        return 0;
+    }
+
+    ip = ip.toString();
+
+    if(isNaN(ip) && ip.indexOf(".") == -1) {
+        return 0;
+    }
+
+    if(ip.indexOf(".") == -1) {
+
+        try {
+            ip = parseFloat(ip);
+            return ip < 0 || ip > 4294967296 ? 0 : ip;
+        }
+        catch(s) {
+        }
+    }
+
+    var parts = ip.split(".");
+
+    if(parts.length != 4) {
+        return 0;
+    }
+
+    var ipl = 0;
+
+    for(var i=0; i<4; i++) {
+        parts[i] = parseInt(parts[i], 10);
+
+        if(parts[i] < 0 || parts[i] > 255) {
+            return 0;
+        }
+
+        ipl += parts[3-i] * (Math.pow(256, i));
+    }
+
+    return ipl > 4294967296 ? 0 : ipl;
+}
 
 /**
  * A qcuick little binary search
  * @param ip the ip we're looking for
  * @return {*}
  */
-function find(ip) {
+function find(ipl) {
 
-   var mpi = 0;
-   var n = midpoints[0];
-   var step;
-   var parts = ip.split(".");
-   var ipl = parseInt(parts[3], 10) +
-            (parseInt(parts[2], 10) * 256) +
-            (parseInt(parts[1], 10) * 65536) +
-            (parseInt(parts[0], 10) * 16777216);
-
+    var mpi = 0;
+    var n = midpoints[0];
+    var step;
     var current;
     var next;
     var prev;
@@ -116,7 +161,7 @@ function find(ip) {
         }
 
         numcountries = countries.length;
-		ready = true;
+		geoip.ready = true;
     });
 
 }());
