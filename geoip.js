@@ -83,8 +83,8 @@ function find(ipl) {
     
     while(true) {
 
-        mpi++;
         step = midpoints[mpi];
+        mpi++;
         current = countries[n];
         nn = n + 1;
         pn = n - 1;
