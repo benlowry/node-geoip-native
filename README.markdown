@@ -32,13 +32,15 @@ Node GeoIP Native provides methods for:
 
 ## Examples
 
-	var geoip = require("geoip-native");
-	var ip = "123.123.123.123";
-	geoip.lookup(ip);
-	console.log("country: " + ip.name + " / " + ip.code);
+```js
+const geoip = require("geoip-native");
+const ip = "123.123.123.123";
+const res = geoip.lookup(ip);
+console.log("country: " + res.name + " / " + res.code);
 
-	// in practice you'd want:
-	// ip = request.headers["x-forwarded-for"] || request.connection.remoteAddress,
+// in practice you'd want:
+// ip = request.headers["x-forwarded-for"] || request.connection.remoteAddress,
+```
 
 ### What's missing
 Be neat to expand this to include cities.
